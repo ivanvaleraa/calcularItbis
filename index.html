@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>Calculadora de ITBIS</title>
+	<meta charset="UTF-8">
+</head>
+
+
+<body>
+<table>
+	<tr>
+		<td><label for="neto">Neto: </label></td>
+		<td><input type="text" name="neto" id="neto" placeholder="Ingrese el monto neto" onkeyup="calcular(this)"/></td>
+	</tr>
+	<tr>
+		<td><label for="neto">Bruto: </label></td>
+		<td><input type="text" name="bruto" id="bruto" readonly value = "0.00"/></td>
+	</tr>
+	<tr>
+		<td><label for="neto">Itbis (18%): </label></td>
+		<td><input type="text" name="itbis" id="itbis" readonly value = "0.00"/></td>
+	</tr>
+
+</table>
+<p>
+*Nota: Este impuesto se aplicará sobre las transferencias gravadas y/o servicios prestados con una
+	tasa de un 18%. Yogurt, mantequilla, café, grasas, animales o vegetales comestibles, azúcares,
+	cacao y chocolate no podran ser calculados aqui.
+</p>
+
+<script>
+	function calcular(neto){
+		neto = parseFloat(neto.value);
+		bruto = calcularBruto(neto);
+	}
+
+	function calcularBruto(neto){
+		bruto = neto / 1.18;
+		bruto = bruto.toFixed(2);
+		document.getElementById("bruto").value = bruto;
+		calcularItbis(bruto);
+
+	}
+
+	function calcularItbis(bruto){
+		itbis = bruto * 0.18;
+		itbis = itbis.toFixed(2);
+		document.getElementById("itbis").value = itbis;
+	}
+</script>
+
+</body>
+
+
+</html>
