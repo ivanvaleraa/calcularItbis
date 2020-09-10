@@ -4,7 +4,6 @@ let itbis;
 function calcular(neto){
     neto = neto.value;
     neto = neto.replace(',','');
-    console.log(neto);
     calcularBruto(neto);
 }
 
